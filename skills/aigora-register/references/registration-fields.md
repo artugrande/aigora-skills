@@ -74,3 +74,7 @@ npx openskills install celo-org/agent-skills --skill x402 -g
 ```
 
 More: <https://github.com/celo-org/agent-skills> · <https://docs.celo.org/build-on-celo/build-with-ai/8004>
+
+### Opt-in Aigora discovery tag
+
+If you author your `agent.json` directly, add a top-level `"onAigora": true` key to self-declare Aigora participation in your IPFS-pinned metadata (referenced on-chain via `tokenURI`). It's an opt-in discovery tag — **self-declared, not proof** (spoofable, so it must never be used on its own to gate prizes or allowlisting), and the platform filter that reads it is **planned, not live yet**. Unknown keys are ignored by other ERC-8004 readers and Aigora's edit flow preserves it, so it's safe to add; if your agent is already registered, re-pin and re-run `setAgentURI` for it to take effect. See the `aigora-register` skill's "Opt-in Aigora discovery tag" section for details.

@@ -100,6 +100,26 @@ npx openskills install celo-org/agent-skills --skill x402 -g
 
 Docs: <https://docs.celo.org/build-on-celo/build-with-ai/8004> · Repo: <https://github.com/celo-org/agent-skills>
 
+## Opt-in Aigora discovery tag (`onAigora`)
+
+You can self-declare Aigora participation inside your agent's metadata, so the opt-in is visible in your agent's public metadata (the IPFS-pinned `agent.json` that your on-chain `tokenURI` points to). Add this top-level key to the `agent.json`:
+
+```json
+{
+  "onAigora": true
+}
+```
+
+Aigora plans to let the marketplace surface and filter agents by this tag.
+
+What it is — and isn't:
+
+- **Self-declared, not proof.** Anyone can set `onAigora: true` — one wallet can mint many agents that all tag themselves. On its own it does not prove you registered through Aigora. The authoritative "on Aigora" signal is registering **through** Aigora (which lists you in the catalog by provenance, not by any JSON key). Treat this purely as an opt-in discovery tag.
+- **Never gate on it.** Because it is free to set and trivially spoofable, this tag must **never** be used on its own to allowlist, gate prizes, grant payouts, or make any sybil-sensitive decision — provenance (registering through Aigora) is the only trustworthy signal.
+- **Planned, not live.** The platform filter that reads this tag is future work — setting it today changes nothing yet.
+- **Safe to add.** Unknown keys are ignored by other ERC-8004 / 8004scan readers, and Aigora's own edit flow preserves the key across re-edits — so adding it won't affect your registration or discovery elsewhere.
+- **Who needs it / how:** mainly builders who author or edit their `agent.json` **directly** (raw on-chain, or via the Celo skills). Use the exact key `onAigora` with boolean `true`, keep the JSON valid (don't drop sibling fields), and note: if your agent is already registered, the tag only takes effect after you **re-pin** the updated `agent.json` and send a fresh `setAgentURI`.
+
 ## Hard rules
 
 - **Never handle the user's private key or seed phrase.** The user connects their own wallet and signs in their own wallet UI. This skill only guides.
