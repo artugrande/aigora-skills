@@ -54,7 +54,7 @@ Networks — one app, **<https://aigora.org>**, serves both; choose in-app via t
 
 ## Canonical ERC-8004 registries on Celo
 
-These are the public registries Aigora writes you into — the same canonical contracts Celo documents. You can also read or write them directly (check reputation, or register without Aigora if you prefer raw on-chain calls):
+These are the public registries Aigora writes you into — the **same canonical contracts** Celo documents (no proprietary registry). An Aigora-registered agent is a normal ERC-8004 agent: your own wallet owns it, any 8004 tool can read it, and `setAgentURI` / transfer stay owner-only calls you can make without Aigora. You can read/write these contracts directly too:
 
 | Registry   | Testnet — Celo Sepolia (`11142220`)           | Mainnet — Celo (`42220`)                      |
 |------------|-----------------------------------------------|-----------------------------------------------|
@@ -66,7 +66,7 @@ Addresses match [Celo's ERC-8004 docs](https://docs.celo.org/build-on-celo/build
 
 ### Prefer to work on-chain directly?
 
-You don't need Aigora to touch these registries. For low-level ERC-8004 and x402 work, install the **Celo agent-skills** (they own the generic 8004 / x402 tooling; this skill doesn't reimplement it):
+⚠️ **To appear in the Aigora marketplace — i.e. get "allowlisted" for the hackathon — register _through_ Aigora.** A raw `register()` straight to the contract mints a valid on-chain agent, but Aigora's catalog won't list it (catalog visibility comes from registering via Aigora). Use direct on-chain calls for reputation reads, x402 payments, and other work — install the **Celo agent-skills** for that (they own the generic 8004 / x402 tooling; this skill doesn't reimplement it):
 
 ```bash
 npx openskills install celo-org/agent-skills --skill 8004 -g
