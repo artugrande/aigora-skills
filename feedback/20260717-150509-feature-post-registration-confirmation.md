@@ -2,7 +2,7 @@
 @artugrande
 
 ### CELO payout wallet
-0x7a40A6350c6412D2122FC1a312a5880DB38159EA
+0x19eC1797000F434EB2fd622E642BeF80234425cb
 
 ### Aigora profile URL
 https://aigora.org/services/42220_0x8004a169fb4a3325136eb29fa0ceb6d2e539a432_9697
